@@ -5,10 +5,12 @@ import com.just.todo.it.model.UserInfo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
 
+@Repository
 public class TodoAppRepoImpl implements TodoAppRepo {
     private final EntityManager mEntityManager;
 

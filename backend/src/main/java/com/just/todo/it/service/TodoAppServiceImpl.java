@@ -4,10 +4,12 @@ import com.just.todo.it.model.TodoInfo;
 import com.just.todo.it.model.UserInfo;
 import com.just.todo.it.repository.TodoAppRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
 
+@Service
 public class TodoAppServiceImpl implements TodoAppService {
     private final TodoAppRepo mTodoAppRepo;
 
