@@ -74,14 +74,21 @@ public class TodoAppRepoImpl implements TodoAppRepo {
     }
 
     @Override
-    public boolean checkLogin(UserInfo userInfo) {
+    public boolean isLoggedIn(UserInfo userInfo) {
+        return mEntityManager.find(UserInfo.class, userInfo.getUserId()).isLoggedIn();
+    }
+
+    @Override
+    public boolean verifyLogin(UserInfo userInfo) {
         UserInfo userInfoDb = mEntityManager.find(UserInfo.class, userInfo.getUserId());
 
         return userInfo.getUserCredentials().getPassword().equals(userInfoDb.getUserCredentials().getPassword());
     }
 
     @Override
-    public void logout(UserInfo userInfo) {
-        // No idea how to do this.
+    public UserInfo logout(UserInfo userInfo) {
+        userInfo.setLoggedIn(false);
+
+        return mEntityManager.merge(userInfo);
     }
 }

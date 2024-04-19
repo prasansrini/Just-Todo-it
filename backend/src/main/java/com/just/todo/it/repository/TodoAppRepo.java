@@ -23,7 +23,9 @@ public interface TodoAppRepo {
 
     void updateTodo(TodoInfo todoInfo);
 
-    boolean checkLogin(UserInfo userInfo);
+    boolean verifyLogin(UserInfo userInfo);
 
-    void logout(UserInfo userInfo);
+    boolean isLoggedIn(UserInfo userInfo);
+
+    UserInfo logout(UserInfo userInfo);
 }
