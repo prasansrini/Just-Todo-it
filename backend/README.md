@@ -21,7 +21,7 @@ A simple Spring boot back-end application to serve and maintain Todo list and us
 ### Procedure to run:
 * Set up the DB with the correct configuration.
 * Update DB URL in the application.properties.
-* Run ./build_install.sh
+* Run ./build_install.sh <db_username> <db_password>
 
 ### Running tests:
 * Run ./build_test.sh adn verify if all the tests are passing.
