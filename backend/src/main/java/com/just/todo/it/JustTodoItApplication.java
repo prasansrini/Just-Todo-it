@@ -5,9 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class JustTodoItApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(JustTodoItApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(JustTodoItApplication.class, args);
+    }
 }

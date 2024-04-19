@@ -16,6 +16,9 @@ public class UserInfo {
     @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "is_logged_in", columnDefinition = "boolean default false")
+    private boolean isLoggedIn;
+
     @Column(name = "credentials")
     @Embedded
     private UserCredentials userCredentials;
@@ -23,10 +26,11 @@ public class UserInfo {
     public UserInfo() {
     }
 
-    public UserInfo(String firstName, String lastName, UserCredentials userCredentials) {
+    public UserInfo(String firstName, String lastName, boolean isLoggedIn, UserCredentials userCredentials) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userCredentials = userCredentials;
+        this.isLoggedIn = isLoggedIn;
     }
 
     public int getUserId() {
@@ -59,5 +63,13 @@ public class UserInfo {
 
     public void setUserCredentials(UserCredentials userCredentials) {
         this.userCredentials = userCredentials;
+    }
+
+    public boolean isLoggedIn() {
+        return isLoggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        isLoggedIn = loggedIn;
     }
 }

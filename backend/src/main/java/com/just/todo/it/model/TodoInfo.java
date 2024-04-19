@@ -49,12 +49,12 @@ public class TodoInfo {
         this.taskId = mTaskId;
     }
 
-    public int getUser() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUser(int mUser) {
-        this.userId = mUser;
+    public void setUserId(int mUserId) {
+        this.userId = mUserId;
     }
 
     public String getTaskTitle() {
@@ -89,7 +89,7 @@ public class TodoInfo {
         this.isDeleted = mIsDeleted;
     }
 
-    public boolean isIsDone() {
+    public boolean isDone() {
         return isDone;
     }
 
