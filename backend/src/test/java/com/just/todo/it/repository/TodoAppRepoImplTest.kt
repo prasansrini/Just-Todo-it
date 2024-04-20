@@ -1,14 +1,24 @@
 package com.just.todo.it.repository
 
-import org.junit.jupiter.api.Test
+import com.just.todo.it.JustTodoItApplication
+import com.just.todo.it.model.UserInfo
+import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
+import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.context.junit4.SpringRunner
+import org.testng.annotations.Test
 
-internal class TodoAppRepoImplTest {
+@RunWith(SpringRunner::class)
+@SpringBootTest(classes = [JustTodoItApplication::class])
+@DataJpaTest
+public class TodoAppRepoImplTest {
     @Autowired
-    private lateinit var repository: TodoAppRepoImpl
+    private var repository: TodoAppRepoImpl? = null
 
     @Test
-    fun registerUser() {
+    public fun registerUser() {
+        repository!!.registerUser(UserInfo("Prasanna", "Srinivasan", true, null));
     }
 
     @Test
