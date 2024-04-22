@@ -25,7 +25,7 @@ public class TodoAppServiceImpl implements TodoAppService {
     }
 
     @Override
-    public Map<UserInfo, List<TodoInfo>> getTodoListByUser(UserInfo userInfo) {
+    public Map<Integer, List<TodoInfo>> getTodoListByUser(int userInfo) {
         return mTodoAppRepo.getTodoListByUser(userInfo);
     }
 

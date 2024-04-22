@@ -36,11 +36,11 @@ public class TodoAppRepoImpl implements TodoAppRepo {
     }
 
     @Override
-    public Map<UserInfo, List<TodoInfo>> getTodoListByUser(UserInfo userInfo) {
+    public Map<Integer, List<TodoInfo>> getTodoListByUser(int userId) {
         TypedQuery<TodoInfo> query = mEntityManager.createQuery("FROM TodoInfo", TodoInfo.class);
 
-        return Map.of(userInfo,
-                query.getResultList().stream().filter(t -> t.getUserId() == userInfo.getUserId()).toList());
+        return Map.of(userId,
+                query.getResultList().stream().filter(t -> t.getUserId() == userId).toList());
     }
 
     @Override

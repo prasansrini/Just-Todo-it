@@ -9,7 +9,7 @@ import java.util.Map;
 public interface TodoAppRepo {
     UserInfo registerUser(UserInfo userInfo);
 
-    Map<UserInfo, List<TodoInfo>> getTodoListByUser(UserInfo userInfo);
+    Map<Integer, List<TodoInfo>> getTodoListByUser(int userId);
 
     TodoInfo createTodo(TodoInfo todoInfo);
 

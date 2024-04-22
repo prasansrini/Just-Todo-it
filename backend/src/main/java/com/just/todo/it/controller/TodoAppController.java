@@ -23,9 +23,9 @@ public class TodoAppController {
         return todoAppService.createTodo(todoInfo);
     }
 
-    @GetMapping("/user")
-    public String getUser() {
-        return todoAppService.getTodoListByUser(new UserInfo()).toString();
+    @GetMapping("/todo/user")
+    public String getTodoByUser(@RequestBody int userId) {
+        return todoAppService.getTodoListByUser(userId).toString();
     }
 
     @PostMapping("/register")
