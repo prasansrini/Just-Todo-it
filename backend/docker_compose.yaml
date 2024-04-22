@@ -1,0 +1,20 @@
+#version: ‘3’
+services:
+  my-sql-server:
+    container_name: java-backend-my-sql
+    image: prasansrini29/java-backend-my-sql:latest
+    ports:
+      - 3306:3306
+
+  java-backend:
+    container_name: java-backend
+    image: prasansrini29/java-backend:latest
+    ports:
+      - 8080:8080
+    command: sleep 60;echo "Hello";
+    environment:
+      - DATABASE_URL=jdbc:mysql://localhost:3306/todo_tracker
+      - DATABASE_USERNAME=prasanna
+      - DATABASE_PASSWORD=Password@29
+    depends_on:
+      - my-sql-server

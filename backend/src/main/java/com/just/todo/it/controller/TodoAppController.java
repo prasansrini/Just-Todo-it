@@ -25,4 +25,13 @@ public class TodoAppController {
     public String getUser() {
         return todoAppService.getTodoListByUser(new UserInfo()).toString();
     }
+
+    @PostMapping("/register")
+    public UserInfo registerUser(@RequestBody UserInfo userInfo) {
+        if (userInfo != null && userInfo.getFirstName() == null && userInfo.getLastName() == null) {
+            return null;
+        } else {
+            return todoAppService.registerUser(userInfo);
+        }
+    }
 }

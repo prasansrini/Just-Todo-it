@@ -72,4 +72,15 @@ public class UserInfo {
     public void setLoggedIn(boolean loggedIn) {
         isLoggedIn = loggedIn;
     }
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "userId=" + userId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", isLoggedIn=" + isLoggedIn +
+                ", userCredentials=" + userCredentials +
+                '}';
+    }
 }
