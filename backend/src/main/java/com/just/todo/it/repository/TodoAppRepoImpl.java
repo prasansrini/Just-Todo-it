@@ -91,6 +91,10 @@ public class TodoAppRepoImpl implements TodoAppRepo {
             return false;
         }
 
+        if (!userInfo.getUserCredentials().getUserName().equals(userInfoDb.getUserCredentials().getUserName())) {
+            return false;
+        }
+
         if (userInfo.getUserCredentials().getPassword().equals(userInfoDb.getUserCredentials().getPassword())) {
             userInfoDb.setLoggedIn(true);
 
