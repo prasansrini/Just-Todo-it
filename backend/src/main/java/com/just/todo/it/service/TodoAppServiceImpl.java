@@ -63,8 +63,12 @@ public class TodoAppServiceImpl implements TodoAppService {
     }
 
     @Override
-    public boolean verifyLogin(UserInfo userInfo) {
-        return mTodoAppRepo.verifyLogin(userInfo);
+    public String verifyLogin(UserInfo userInfo) {
+        if (mTodoAppRepo.verifyLogin(userInfo)) {
+            return mTodoAppRepo.getUserById(userInfo.getUserId()).toString();
+        } else {
+            return "User not found or wrong credentials!";
+        }
     }
 
     @Override
@@ -76,5 +80,10 @@ public class TodoAppServiceImpl implements TodoAppService {
     @Transactional
     public UserInfo logout(UserInfo userInfo) {
         return mTodoAppRepo.logout(userInfo);
+    }
+
+    @Override
+    public UserInfo getUserById(int userId) {
+        return mTodoAppRepo.getUserById(userId);
     }
 }

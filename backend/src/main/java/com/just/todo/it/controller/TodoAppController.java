@@ -4,6 +4,8 @@ import com.just.todo.it.model.TodoInfo;
 import com.just.todo.it.model.UserInfo;
 import com.just.todo.it.service.TodoAppService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -33,5 +35,10 @@ public class TodoAppController {
         } else {
             return todoAppService.registerUser(userInfo);
         }
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> loginUser(@RequestBody UserInfo userInfo) {
+        return new ResponseEntity<>(todoAppService.verifyLogin(userInfo), HttpStatus.OK);
     }
 }

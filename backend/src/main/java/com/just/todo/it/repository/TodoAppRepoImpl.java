@@ -83,10 +83,23 @@ public class TodoAppRepoImpl implements TodoAppRepo {
     }
 
     @Override
+    @Transactional
     public boolean verifyLogin(UserInfo userInfo) {
         UserInfo userInfoDb = mEntityManager.find(UserInfo.class, userInfo.getUserId());
 
-        return userInfo.getUserCredentials().getPassword().equals(userInfoDb.getUserCredentials().getPassword());
+        if (userInfoDb == null) {
+            return false;
+        }
+
+        if (userInfo.getUserCredentials().getPassword().equals(userInfoDb.getUserCredentials().getPassword())) {
+            userInfoDb.setLoggedIn(true);
+
+            mEntityManager.merge(userInfoDb);
+
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -94,5 +107,10 @@ public class TodoAppRepoImpl implements TodoAppRepo {
         userInfo.setLoggedIn(false);
 
         return mEntityManager.merge(userInfo);
+    }
+
+    @Override
+    public UserInfo getUserById(int userId) {
+        return mEntityManager.find(UserInfo.class, userId);
     }
 }

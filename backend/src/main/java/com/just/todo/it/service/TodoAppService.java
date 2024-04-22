@@ -23,9 +23,11 @@ public interface TodoAppService {
 
     void updateTodo(TodoInfo todoInfo);
 
-    boolean verifyLogin(UserInfo userInfo);
+    String verifyLogin(UserInfo userInfo);
 
     boolean isLoggedIn(UserInfo userInfo);
 
     UserInfo logout(UserInfo userInfo);
+
+    UserInfo getUserById(int userId);
 }

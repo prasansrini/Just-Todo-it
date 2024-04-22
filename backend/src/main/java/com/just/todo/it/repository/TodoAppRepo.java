@@ -28,4 +28,6 @@ public interface TodoAppRepo {
     boolean isLoggedIn(UserInfo userInfo);
 
     UserInfo logout(UserInfo userInfo);
+
+    UserInfo getUserById(int userId);
 }
