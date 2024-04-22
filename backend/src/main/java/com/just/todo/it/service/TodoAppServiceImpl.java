@@ -5,6 +5,7 @@ import com.just.todo.it.model.UserInfo;
 import com.just.todo.it.repository.TodoAppRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -29,6 +30,7 @@ public class TodoAppServiceImpl implements TodoAppService {
     }
 
     @Override
+    @Transactional
     public TodoInfo createTodo(TodoInfo todoInfo) {
         return mTodoAppRepo.createTodo(todoInfo);
     }
@@ -49,11 +51,13 @@ public class TodoAppServiceImpl implements TodoAppService {
     }
 
     @Override
+    @Transactional
     public void deleteTodo(int todoId) {
         mTodoAppRepo.deleteTodo(todoId);
     }
 
     @Override
+    @Transactional
     public void updateTodo(TodoInfo todoInfo) {
         mTodoAppRepo.updateTodo(todoInfo);
     }
@@ -69,6 +73,7 @@ public class TodoAppServiceImpl implements TodoAppService {
     }
 
     @Override
+    @Transactional
     public UserInfo logout(UserInfo userInfo) {
         return mTodoAppRepo.logout(userInfo);
     }
