@@ -25,7 +25,7 @@ public interface TodoAppRepo {
 
     boolean verifyLogin(UserInfo userInfo);
 
-    boolean isLoggedIn(UserInfo userInfo);
+    boolean isLoggedIn(int userId);
 
     UserInfo logout(UserInfo userInfo);
 

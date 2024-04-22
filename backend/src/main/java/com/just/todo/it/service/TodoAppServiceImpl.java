@@ -32,7 +32,11 @@ public class TodoAppServiceImpl implements TodoAppService {
     @Override
     @Transactional
     public TodoInfo createTodo(TodoInfo todoInfo) {
-        return mTodoAppRepo.createTodo(todoInfo);
+        if (mTodoAppRepo.isLoggedIn(todoInfo.getUserId())) {
+            return mTodoAppRepo.createTodo(todoInfo);
+        } else {
+            return null;
+        }
     }
 
     @Override
@@ -72,8 +76,8 @@ public class TodoAppServiceImpl implements TodoAppService {
     }
 
     @Override
-    public boolean isLoggedIn(UserInfo userInfo) {
-        return mTodoAppRepo.isLoggedIn(userInfo);
+    public boolean isLoggedIn(int userId) {
+        return mTodoAppRepo.isLoggedIn(userId);
     }
 
     @Override

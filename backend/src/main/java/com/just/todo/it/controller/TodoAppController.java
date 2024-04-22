@@ -19,8 +19,13 @@ public class TodoAppController {
     }
 
     @PostMapping("/todo/create")
-    public TodoInfo createTodo(@RequestBody TodoInfo todoInfo) {
-        return todoAppService.createTodo(todoInfo);
+    public String createTodo(@RequestBody TodoInfo todoInfo) {
+        TodoInfo todoInfoResult = todoAppService.createTodo(todoInfo);
+        if (todoInfoResult != null) {
+            return todoInfoResult.toString();
+        } else {
+            return "User has to be logged in to create a Todo!";
+        }
     }
 
     @GetMapping("/todo/user")

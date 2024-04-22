@@ -78,8 +78,8 @@ public class TodoAppRepoImpl implements TodoAppRepo {
     }
 
     @Override
-    public boolean isLoggedIn(UserInfo userInfo) {
-        return mEntityManager.find(UserInfo.class, userInfo.getUserId()).isLoggedIn();
+    public boolean isLoggedIn(int userId) {
+        return mEntityManager.find(UserInfo.class, userId).isLoggedIn();
     }
 
     @Override
