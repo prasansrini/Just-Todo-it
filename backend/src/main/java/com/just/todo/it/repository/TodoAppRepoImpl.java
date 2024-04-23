@@ -25,6 +25,8 @@ public class TodoAppRepoImpl implements TodoAppRepo {
     public UserInfo registerUser(UserInfo userInfo) {
         mEntityManager.persist(userInfo);
 
+        System.out.println(userInfo);
+
         return mEntityManager.find(UserInfo.class, userInfo.getUserId());
     }
 
@@ -121,5 +123,6 @@ public class TodoAppRepoImpl implements TodoAppRepo {
     @Override
     public void deleteUser(UserInfo userInfo) {
         mEntityManager.remove(mEntityManager.find(UserInfo.class, userInfo.getUserId()));
+        System.out.println("Deleted userID: " + userInfo.getUserId());
     }
 }
