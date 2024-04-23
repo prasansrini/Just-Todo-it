@@ -90,4 +90,10 @@ public class TodoAppServiceImpl implements TodoAppService {
     public UserInfo getUserById(int userId) {
         return mTodoAppRepo.getUserById(userId);
     }
+
+    @Override
+    @Transactional
+    public void deleteUser(UserInfo userInfo) {
+        mTodoAppRepo.deleteUser(userInfo);
+    }
 }

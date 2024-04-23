@@ -1,65 +1,83 @@
-package com.just.todo.it.service;
+package com.just.todo.it.service
 
-import com.just.todo.it.model.UserInfo;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import static org.junit.jupiter.api.Assertions.*;
+import com.just.todo.it.model.UserCredentials
+import com.just.todo.it.model.UserInfo
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Test
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class TodoAppServiceImplTest {
+internal class TodoAppServiceImplTest {
     @Autowired
-    private TodoAppService mTodoAppService;
+    private val mTodoAppService: TodoAppService? = null
 
-    @Test
-    void registerUser() {
-        mTodoAppService.registerUser(new UserInfo());
+    private var mUserInfo: UserInfo? = null
+
+    @AfterEach
+    fun resetCurrent() {
+        if (mUserInfo != null) {
+            mTodoAppService!!.deleteUser(mUserInfo)
+        }
     }
 
     @Test
-    void getTodoListByUser() {
+    fun registerUser() {
+        val userInfo = UserInfo(
+            "testFirstName", "testLastName", false,
+            UserCredentials("test", "testPassword")
+        )
+
+        val result = mTodoAppService!!.registerUser(userInfo)
+
+        Assertions.assertEquals(userInfo.userId, result.userId)
+        Assertions.assertNotEquals(userInfo.userId, 0)
+
+        mUserInfo = userInfo
     }
 
     @Test
-    void createTodo() {
+    fun todoListByUserTest() {
     }
 
     @Test
-    void getClosedTodoListByUser() {
+    fun createTodo() {
     }
 
     @Test
-    void getOpenTodoListByUser() {
+    fun closedTodoListByUser() {
     }
 
     @Test
-    void getDeletedTodoListByUser() {
+    fun openTodoListByUser() {
     }
 
     @Test
-    void deleteTodo() {
+    fun deletedTodoListByUser() {
     }
 
     @Test
-    void updateTodo() {
+    fun deleteTodo() {
     }
 
     @Test
-    void verifyLogin() {
+    fun updateTodo() {
     }
 
     @Test
-    void isLoggedIn() {
+    fun verifyLogin() {
     }
 
     @Test
-    void logout() {
+    fun isLoggedIn() {
     }
 
     @Test
-    void getUserById() {
+    fun logout() {
+    }
+
+    @Test
+    fun userById() {
     }
 }

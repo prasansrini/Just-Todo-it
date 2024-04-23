@@ -30,4 +30,6 @@ public interface TodoAppService {
     UserInfo logout(UserInfo userInfo);
 
     UserInfo getUserById(int userId);
+
+    void deleteUser(UserInfo userInfo);
 }

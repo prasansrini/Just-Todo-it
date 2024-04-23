@@ -117,4 +117,9 @@ public class TodoAppRepoImpl implements TodoAppRepo {
     public UserInfo getUserById(int userId) {
         return mEntityManager.find(UserInfo.class, userId);
     }
+
+    @Override
+    public void deleteUser(UserInfo userInfo) {
+        mEntityManager.remove(mEntityManager.find(UserInfo.class, userInfo.getUserId()));
+    }
 }
